@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Reservation from './pages/Reservation';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+// Hour 2 Start
 const theme = createTheme({
   palette: {
     primary: {
