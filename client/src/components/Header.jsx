@@ -15,9 +15,7 @@ import { DateRangePicker, DateRange } from 'mui-daterange-picker';
 import { useState } from 'react';
 import { FormGroup } from '@mui/material';
 import { format } from 'date-fns';
-// import { DateRange } from 'react-date-range';
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
+import './header.css';
 
 const StyledVideo = styled('video')({
   width: '100%',
@@ -59,6 +57,10 @@ const SearchStack = styled(Stack)(({ theme }) => ({
     padding: '0 20px',
   },
 }));
+
+const StyledSelect = styled(Select)({
+  width: '100%',
+});
 
 const Header = () => {
   const theme = useTheme();
@@ -102,7 +104,7 @@ const Header = () => {
                 <InputLabel id='locationLabel'>
                   Pickup/Return Location
                 </InputLabel>
-                <Select
+                <StyledSelect
                   labelId='locationLabel'
                   id='location'
                   sx={{ flex: 1 }}
@@ -112,7 +114,7 @@ const Header = () => {
                 >
                   <MenuItem value='DFW'>DFW Airport</MenuItem>
                   <MenuItem value='STOVALL'>Stovall Park Arlington</MenuItem>
-                </Select>
+                </StyledSelect>
                 <Typography sx={{ flex: 1 }} onClick={() => setOpen(!open)}>
                   {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
                   ${format(dateRange.endDate, 'MM/dd/yyyy')}`}
