@@ -13,12 +13,12 @@ const theme = createTheme({
     primary: {
       main: '#37474f',
       light: '#62727b',
-      dark: '#102027',
+      dark: '#1c313a',
     },
     secondary: {
-      main: '#f5f5f5',
+      main: '#e0e0e0',
       light: '#ffffff',
-      dark: '#c2c2c2',
+      dark: '#aeaeae',
     },
   },
 });

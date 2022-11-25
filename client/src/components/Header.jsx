@@ -22,6 +22,8 @@ const StyledVideo = styled('video')({
 });
 
 const SearchBarPaper = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
+  border: '5px solid #000000',
   width: '60vw',
   height: '80px',
   borderRadius: '40px',
@@ -69,7 +71,7 @@ const Header = () => {
     startDate: new Date(),
     endDate: new Date(),
   });
-  const [location, setLocation] = useState('STOVALL');
+  const [location, setLocation] = useState('');
 
   console.log(dateRange);
   return (

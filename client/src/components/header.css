@@ -1,5 +1,9 @@
 @media (max-width: 600px) {
-  .MuiGrid-root.css-vj1n65-MuiGrid-root {
-    display: none;
+  .css-1vism8w-MuiGrid-root {
+    flex-direction: column !important;
   }
+}
+
+.css-h4y409-MuiList-root {
+  display: none;
 }
