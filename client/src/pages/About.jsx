@@ -1,5 +1,5 @@
 import { useTheme } from '@emotion/react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { Stack } from '@mui/system';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,15 +10,31 @@ import Button from '@mui/material/Button';
 const About = () => {
   const theme = useTheme();
 
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <Box>
-      <Stack sx={{ gap: '40px' }}>
+      <Stack
+        sx={{
+          gap: '40px',
+          overflow: 'hidden',
+          paddingTop: matches ? 0 : '40px',
+        }}
+      >
         <Box sx={{ paddingTop: '100px', width: '100%', textAlign: 'center' }}>
-          <Typography variant='h1' color={theme.palette.primary.dark}>
+          <Typography
+            variant={matches ? 'h1' : 'h2'}
+            fontWeight={400}
+            color={theme.palette.primary.dark}
+          >
             Mobility. Delivered.
           </Typography>
         </Box>
-        <Typography variant='h6' color={theme.palette.primary.dark} mt={5}>
+        <Typography
+          variant={matches ? 'h6' : 'subtitle1'}
+          color={theme.palette.primary.dark}
+          mt={5}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus
           eget purus vitae laoreet. Mauris id purus a nisl posuere pretium. Nunc
           a velit nec ante dignissim volutpat ut ac nibh. Sed sodales sit amet
@@ -29,28 +45,40 @@ const About = () => {
           tortor, varius vitae massa a, egestas molestie odio. Quisque viverra
           sapien mi. Sed vitae lectus in tortor dignissim malesuada.
         </Typography>
-        <Box sx={{ paddingTop: '100px', width: '100%', textAlign: 'center' }}>
-          <Typography variant='h2' color={theme.palette.primary.dark}>
-            Featured Vehicle
-          </Typography>
-        </Box>
-        <Card sx={{ backgroundColor: theme.palette.secondary }}>
-          <CardMedia
-            component='img'
-            image='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669394139/Rev%20Rentals/Tesla_Creative_1_ir1osw.jpg'
-            height='500'
-          />
-          <CardContent sx={{ textAlign: 'center' }}>
-            <Typography gutterBottom variant='h3' component='div'>
-              Tesla Model 3
+        <Box sx={{ display: matches ? 'block' : 'none' }}>
+          <Box
+            sx={{
+              paddingTop: '100px',
+              width: '100%',
+              textAlign: 'center',
+            }}
+          >
+            <Typography variant='h2' color={theme.palette.primary.dark}>
+              Featured Vehicle
             </Typography>
-          </CardContent>
-          <CardActions sx={{ justifyContent: 'center' }}>
-            <Button size='large' variant='contained' fullWidth>
-              Book Now
-            </Button>
-          </CardActions>
-        </Card>
+          </Box>
+          <Card
+            sx={{
+              backgroundColor: theme.palette.secondary,
+            }}
+          >
+            <CardMedia
+              component='img'
+              image='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669394139/Rev%20Rentals/Tesla_Creative_1_ir1osw.jpg'
+              height='500'
+            />
+            <CardContent sx={{ textAlign: 'center' }}>
+              <Typography gutterBottom variant='h3' component='div'>
+                Tesla Model 3
+              </Typography>
+            </CardContent>
+            <CardActions sx={{ justifyContent: 'center' }}>
+              <Button size='large' variant='contained' fullWidth>
+                Book Now
+              </Button>
+            </CardActions>
+          </Card>
+        </Box>
       </Stack>
     </Box>
   );

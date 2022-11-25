@@ -4,11 +4,12 @@ import NavBar from '../components/NavBar';
 import About from './About';
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const theme = useTheme();
   return (
-    <div>
+    <Box>
       <NavBar />
       <Header />
       <Box
@@ -17,8 +18,9 @@ const Home = () => {
         <Container>
           <About />
         </Container>
+        <Footer />
       </Box>
-    </div>
+    </Box>
   );
 };
 

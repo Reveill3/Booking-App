@@ -45,6 +45,7 @@ const StyledFormControl = styled(FormControl)(({ theme }) => ({
   gap: '20px',
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
+    gap: '0',
   },
 }));
 
@@ -124,7 +125,7 @@ const Header = () => {
                   <Typography
                     color={theme.palette.primary.main}
                     variant='body1'
-                    sx={{ flex: 1 }}
+                    sx={{ flex: 1, border: '1px solid #000', padding: '5px' }}
                     onClick={() => setOpen(!open)}
                   >
                     {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
