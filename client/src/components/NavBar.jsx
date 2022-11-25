@@ -66,7 +66,7 @@ const NavBar = () => {
             Rev Rentals
           </Typography>
           <StyledLogo
-            src='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669229163/White_logo_-_no_background_oecant.png'
+            src='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669392582/White_logo_-_no_background_gbijh5.png'
             alt='logo'
             height={100}
             width={200}

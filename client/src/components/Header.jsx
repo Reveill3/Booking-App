@@ -32,7 +32,7 @@ const SearchBarPaper = styled(Paper)(({ theme }) => ({
   justifyContent: 'center',
   [theme.breakpoints.down('md')]: {
     width: '90vw',
-    height: '130px',
+    height: '165px',
   },
 }));
 
@@ -80,7 +80,7 @@ const Header = () => {
         width: '100vw',
         position: 'relative',
         height: '100%',
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.secondary.dark,
       }}
     >
       <StyledVideo
@@ -117,14 +117,30 @@ const Header = () => {
                   <MenuItem value='DFW'>DFW Airport</MenuItem>
                   <MenuItem value='STOVALL'>Stovall Park Arlington</MenuItem>
                 </StyledSelect>
-                <Typography sx={{ flex: 1 }} onClick={() => setOpen(!open)}>
-                  {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
+                <Box>
+                  <Typography variant='h6' color={theme.palette.primary.main}>
+                    Rental Dates
+                  </Typography>
+                  <Typography
+                    color={theme.palette.primary.main}
+                    variant='body1'
+                    sx={{ flex: 1 }}
+                    onClick={() => setOpen(!open)}
+                  >
+                    {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
                   ${format(dateRange.endDate, 'MM/dd/yyyy')}`}
-                </Typography>
+                  </Typography>
+                </Box>
               </StyledFormControl>
             </FormGroup>
           </SearchBarPaper>
-          <Box sx={{ position: 'absolute', right: { xs: '0', md: '100px' } }}>
+          <Box
+            sx={{
+              position: 'absolute',
+              right: { xs: '50px', md: '100px' },
+              top: { xs: '-100px', sm: '0' },
+            }}
+          >
             <DateRangePicker
               open={open}
               toggle={() => setOpen(!open)}

@@ -12,7 +12,7 @@ const Home = () => {
       <NavBar />
       <Header />
       <Box
-        sx={{ backgroundColor: theme.palette.primary.light, height: '100vh' }}
+        sx={{ backgroundColor: theme.palette.secondary.dark, height: '100vh' }}
       >
         <Container>
           <About />
