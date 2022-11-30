@@ -8,6 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
@@ -20,10 +22,12 @@ const SpacedButton = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-const StyledLogo = styled('img')(({ theme }) => ({
+const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: 'none',
   display: 'none',
   [theme.breakpoints.up('sm')]: {
     display: 'flex',
+    justifyContent: 'space-between',
   },
 }));
 
@@ -51,40 +55,69 @@ const NavBar = () => {
     setAnchorEl(null);
   };
 
+  const path = useLocation().pathname;
+
+  const notAuth = path !== '/login' && path !== '/register';
   return (
     <div>
       <AppBar position='static'>
         <StyledToolbar>
           {/* Mobile Menu Button*/}
-          <MobileMenu
-            onClick={handleClick}
-            sx={{ flex: 1, justifyContent: 'left' }}
-          >
-            <MenuIcon sx={{ color: 'white' }} />
-          </MobileMenu>
-          <Typography variant='h4' sx={{ display: { sm: 'none' }, flex: 3 }}>
-            Rev Rentals
-          </Typography>
-          <StyledLogo
-            src='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669392582/White_logo_-_no_background_gbijh5.png'
-            alt='logo'
-            height={100}
-            width={200}
-          />
+          {notAuth ? (
+            <MobileMenu
+              onClick={handleClick}
+              sx={{ flex: 1, justifyContent: 'left' }}
+            >
+              <MenuIcon sx={{ color: 'white' }} />
+            </MobileMenu>
+          ) : null}
+          <Box sx={{ display: { sm: 'none' }, flex: 3 }}>
+            <Link style={{ textDecoration: 'none' }} to='/'>
+              <Typography variant='h4' color='secondary'>
+                Rev Rentals
+              </Typography>
+            </Link>
+          </Box>
 
-          <DesktopButtonGroup variant='contained'>
-            <SpacedButton>Login</SpacedButton>
-            <SpacedButton>Register</SpacedButton>
-          </DesktopButtonGroup>
+          <StyledLink to='/'>
+            <img
+              src='https://res.cloudinary.com/ddq3k3ntz/image/upload/v1669392582/Rev%20Rentals/White_logo_-_no_background_gbijh5.png'
+              alt='logo'
+              height={100}
+              width={200}
+            />
+          </StyledLink>
+
+          {notAuth ? (
+            <DesktopButtonGroup variant='contained'>
+              <Link style={{ textDecoration: 'none' }} to='/login'>
+                <SpacedButton>Login</SpacedButton>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to='/register'>
+                <SpacedButton>Register</SpacedButton>
+              </Link>
+            </DesktopButtonGroup>
+          ) : null}
         </StyledToolbar>
       </AppBar>
       {/* Mobile Friendly Menu */}
       <Menu open={open} anchorEl={anchorEl} onClose={handleClose}>
         <MenuItem>
-          <SpacedButton sx={{ width: '100%' }}>Login</SpacedButton>
+          <Link style={{ textDecoration: 'none' }} to='/login'>
+            <SpacedButton
+              sx={{ width: '100%' }}
+              onClick={() => setAnchorEl(null)}
+            >
+              Login
+            </SpacedButton>
+          </Link>
         </MenuItem>
         <MenuItem>
-          <SpacedButton>Register</SpacedButton>
+          <Link style={{ textDecoration: 'none' }} to='/login'>
+            <SpacedButton onClick={() => setAnchorEl(null)}>
+              Register
+            </SpacedButton>
+          </Link>
         </MenuItem>
       </Menu>
     </div>

@@ -25,7 +25,7 @@ const SearchBarPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   border: '5px solid #000000',
   width: '60vw',
-  height: '80px',
+  height: '95px',
   borderRadius: '40px',
   display: 'flex',
   alignItems: 'center',

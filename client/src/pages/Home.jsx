@@ -10,7 +10,6 @@ const Home = () => {
   const theme = useTheme();
   return (
     <Box>
-      <NavBar />
       <Header />
       <Box
         sx={{ backgroundColor: theme.palette.secondary.dark, height: '100vh' }}
@@ -18,7 +17,6 @@ const Home = () => {
         <Container>
           <About />
         </Container>
-        <Footer />
       </Box>
     </Box>
   );

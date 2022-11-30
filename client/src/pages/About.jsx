@@ -21,7 +21,14 @@ const About = () => {
           paddingTop: matches ? 0 : '40px',
         }}
       >
-        <Box sx={{ paddingTop: '100px', width: '100%', textAlign: 'center' }}>
+        <Box
+          sx={{
+            marginTop: matches ? 0 : '75px',
+            paddingTop: '100px',
+            width: '100%',
+            textAlign: 'center',
+          }}
+        >
           <Typography
             variant={matches ? 'h1' : 'h2'}
             fontWeight={400}
