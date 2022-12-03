@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   InputLabel,
+  TextField,
   Typography,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -17,6 +18,9 @@ import { FormGroup } from '@mui/material';
 import { format } from 'date-fns';
 import './header.css';
 import { useNavigate } from 'react-router-dom';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 const StyledVideo = styled('video')({
   width: '100%',
@@ -74,6 +78,9 @@ const Header = () => {
     endDate: new Date(),
   });
   const [location, setLocation] = useState('');
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
+
   const navigate = useNavigate();
   console.log(dateRange);
   return (
@@ -119,7 +126,7 @@ const Header = () => {
                   <MenuItem value='DFW'>DFW Airport</MenuItem>
                   <MenuItem value='STOVALL'>Stovall Park Arlington</MenuItem>
                 </StyledSelect>
-                <Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <Typography variant='h6' color={theme.palette.primary.main}>
                     Rental Dates
                   </Typography>
@@ -132,6 +139,28 @@ const Header = () => {
                     {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
                   ${format(dateRange.endDate, 'MM/dd/yyyy')}`}
                   </Typography>
+                  <Box>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <TimePicker
+                        label='Basic example'
+                        value={startTime}
+                        onChange={(value) => {
+                          setStartTime(value);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <TimePicker
+                        label='Basic example'
+                        value={endTime}
+                        onChange={(newValue) => {
+                          setEndTime(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider>
+                  </Box>
                 </Box>
               </StyledFormControl>
             </FormGroup>
