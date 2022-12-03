@@ -23,14 +23,19 @@ const Info = () => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-  console.log(insurance);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitting...');
+  };
+
   return (
     <Container maxWidth='lg'>
       <Box sx={{ display: 'flex', marginTop: '50px', marginBottom: '50px' }}>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 3 }}>
           <ReservationTimeline />
         </Box>
-        <Stack sx={{ flex: 2 }} gap={5}>
+        <Stack sx={{ flex: 4 }} gap={5}>
           <Box gap={5} display='flex'>
             <TextField
               name='firstName'
@@ -63,21 +68,28 @@ const Info = () => {
             variant='outlined'
             onChange={handleChange}
           />
-          <Box sx={{ display: 'flex' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <input
               type='file'
               id='insurance'
+              accept='image/*'
               style={{ display: 'none' }}
-              onChange={(e) =>
-                setInsurance(URL.createObjectURL(e.target.files[0]))
-              }
+              onChange={(e) => setInsurance(e.target.files[0])}
             />
             <label htmlFor='insurance' style={{ cursor: 'pointer' }}>
               <AttachFileIcon sx={{ width: '35px', height: '35px' }} />
             </label>
             <Typography variant='subtitle1'>Upload Insurance Card</Typography>
           </Box>
-          <Button variant='contained'>Continue To Payment</Button>
+          <Button variant='contained' onClick={handleSubmit}>
+            Continue to Terms/Payment
+          </Button>
         </Stack>
       </Box>
     </Container>

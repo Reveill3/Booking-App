@@ -10,6 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Info from './pages/Info';
+import Checkout from './pages/Checkout';
 
 // Hour 2 Start
 const theme = createTheme({
@@ -48,6 +49,8 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/register', element: <Register /> },
       { path: '/info', element: <Info /> },
+      { path: '/checkout', element: <Checkout /> },
+      { path: '*', element: <h1>404</h1> },
     ],
   },
 ]);

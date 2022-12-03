@@ -57,12 +57,12 @@ export default function ReservationTimeline() {
       </TimelineItem>
       <TimelineItem>
         <TimelineSeparator>
-          <StyledDot color='secondary' onClick={() => navigate('/payment')}>
+          <StyledDot color='secondary' onClick={() => navigate('/checkout')}>
             <PaymentIcon />
           </StyledDot>
         </TimelineSeparator>
         <TimelineContent>
-          <Typography variant='h5'>Enter Payment Info</Typography>
+          <Typography variant='h5'>Terms/Payment</Typography>
         </TimelineContent>
       </TimelineItem>
     </Timeline>
