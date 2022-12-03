@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import Info from './pages/Info';
 
 // Hour 2 Start
 const theme = createTheme({
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: '/reservation', element: <Reservation /> },
       { path: '/login', element: <Login /> },
       { path: '/register', element: <Register /> },
+      { path: '/info', element: <Info /> },
     ],
   },
 ]);

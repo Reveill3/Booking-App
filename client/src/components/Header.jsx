@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { FormGroup } from '@mui/material';
 import { format } from 'date-fns';
 import './header.css';
+import { useNavigate } from 'react-router-dom';
 
 const StyledVideo = styled('video')({
   width: '100%',
@@ -73,7 +74,7 @@ const Header = () => {
     endDate: new Date(),
   });
   const [location, setLocation] = useState('');
-
+  const navigate = useNavigate();
   console.log(dateRange);
   return (
     <Box
@@ -149,7 +150,9 @@ const Header = () => {
               closeOnClickOutside={true}
             />
           </Box>
-          <Button variant='contained'>Check Availability</Button>
+          <Button variant='contained' onClick={() => navigate('/cars')}>
+            Check Availability
+          </Button>
         </SearchStack>
       </Box>
     </Box>

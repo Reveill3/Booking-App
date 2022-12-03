@@ -17,7 +17,6 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const SpacedButton = styled(Button)(({ theme }) => ({
-  marginRight: '10px',
   backgroundColor: theme.palette.secondary.main,
   color: theme.palette.primary.main,
 }));
@@ -39,6 +38,8 @@ const MobileMenu = styled(IconButton)(({ theme }) => ({
 }));
 
 const DesktopButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+  boxShadow: '0px 0px 0px 0px',
+  gap: theme.spacing(2),
   [theme.breakpoints.down('sm')]: {
     display: 'none',
   },

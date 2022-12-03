@@ -51,7 +51,7 @@ const Register = () => {
       </Link>
       <Button
         variant='contained'
-        sx={{ width: '100px' }}
+        sx={{ width: '100px', marginBottom: '20px' }}
         onClick={handleRegister}
       >
         Register

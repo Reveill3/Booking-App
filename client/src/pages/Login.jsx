@@ -42,7 +42,11 @@ const Login = () => {
           Create an account
         </Typography>
       </Link>
-      <Button variant='contained' sx={{ width: '100px' }} onClick={handleLogin}>
+      <Button
+        variant='contained'
+        sx={{ width: '100px', marginBottom: '20px' }}
+        onClick={handleLogin}
+      >
         Login
       </Button>
     </Box>
