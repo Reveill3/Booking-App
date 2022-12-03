@@ -18,8 +18,8 @@ const vehicle = {
 
 const reservation = {
   vehicle: 1,
-  startDate: '2021-12-01 10:00:00',
-  endDate: '2021-12-05 10:00:00',
+  startDate: '2021-12-01 13:00:00',
+  endDate: '2021-12-05 13:00:00',
 };
 
 const DateBox = styled(Box)({
@@ -49,7 +49,7 @@ const BookingSummary = () => {
             {format(new Date(reservation.startDate), 'EEE MMM dd, yyyy')}
           </Typography>
           <Typography variant='body2' fontWeight={300}>
-            10:00 AM
+            {format(new Date(reservation.startDate), 'hh:mm a')}
           </Typography>
         </DateBox>
         <DoubleArrowIcon fontSize='medium' />
@@ -58,7 +58,7 @@ const BookingSummary = () => {
             {format(new Date(reservation.endDate), 'EEE MMM dd, yyyy')}
           </Typography>
           <Typography variant='body2' fontWeight={300}>
-            10:00 AM
+            {format(new Date(reservation.endDate), 'hh:mm a')}
           </Typography>
         </DateBox>
       </Box>

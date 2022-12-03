@@ -18,9 +18,9 @@ import { FormGroup } from '@mui/material';
 import { format } from 'date-fns';
 import './header.css';
 import { useNavigate } from 'react-router-dom';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 
 const StyledVideo = styled('video')({
   width: '100%',
@@ -29,15 +29,16 @@ const StyledVideo = styled('video')({
 const SearchBarPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   border: '5px solid #000000',
-  width: '60vw',
-  height: '95px',
+  width: '80vw',
+  height: '155px',
   borderRadius: '40px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   [theme.breakpoints.down('md')]: {
     width: '90vw',
-    height: '165px',
+    height: '230px',
+    padding: '10px',
   },
 }));
 
@@ -82,7 +83,16 @@ const Header = () => {
   const [endTime, setEndTime] = useState(new Date());
 
   const navigate = useNavigate();
-  console.log(dateRange);
+
+  // Combine Dates and times
+  // console.log(
+  //   new Date(
+  //     new Date(startTime).toLocaleDateString() +
+  //       ' ' +
+  //       new Date(startTime).toLocaleTimeString()
+  //   )
+  // );
+
   return (
     <Box
       sx={{
@@ -108,17 +118,24 @@ const Header = () => {
           justifyContent: 'center',
         }}
       >
-        <SearchStack direction='row'>
+        <SearchStack direction='row' alignItems='center'>
           <SearchBarPaper>
             <FormGroup sx={{ width: '90%' }}>
               <StyledFormControl>
-                <InputLabel id='locationLabel'>
+                <InputLabel
+                  id='locationLabel'
+                  sx={{
+                    top: { xs: '0px', md: '38px' },
+                  }}
+                >
                   Pickup/Return Location
                 </InputLabel>
                 <StyledSelect
                   labelId='locationLabel'
                   id='location'
-                  sx={{ flex: 1 }}
+                  sx={{
+                    flex: 1,
+                  }}
                   label='Pickup/Return Location'
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
@@ -139,10 +156,10 @@ const Header = () => {
                     {`${format(dateRange.startDate, 'MM/dd/yyyy')} to
                   ${format(dateRange.endDate, 'MM/dd/yyyy')}`}
                   </Typography>
-                  <Box>
+                  <Box sx={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <TimePicker
-                        label='Basic example'
+                      <MobileTimePicker
+                        label='Start Time'
                         value={startTime}
                         onChange={(value) => {
                           setStartTime(value);
@@ -151,8 +168,8 @@ const Header = () => {
                       />
                     </LocalizationProvider>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <TimePicker
-                        label='Basic example'
+                      <MobileTimePicker
+                        label='End Time'
                         value={endTime}
                         onChange={(newValue) => {
                           setEndTime(newValue);
@@ -179,7 +196,11 @@ const Header = () => {
               closeOnClickOutside={true}
             />
           </Box>
-          <Button variant='contained' onClick={() => navigate('/cars')}>
+          <Button
+            sx={{ height: '50%' }}
+            variant='contained'
+            onClick={() => navigate('/cars')}
+          >
             Check Availability
           </Button>
         </SearchStack>
