@@ -11,6 +11,8 @@ import { Box, Stack } from '@mui/system';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import ReservationTimeline from '../components/Timeline';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useNavigate } from 'react-router-dom';
 
 const cars = [
   {
@@ -79,10 +81,20 @@ const TypePickerText = styled(Typography)(({ theme }) => ({
 
 const Cars = () => {
   const theme = useTheme();
+  const matches = useMediaQuery(useTheme().breakpoints.up('md'));
+  const navigate = useNavigate();
+
+  const handleCarSelect = (id) => {
+    navigate('/info', { state: { id } });
+  };
+
   return (
     <div>
       <Container maxWidth='xl'>
-        <Stack direction='row' sx={{ justifyContent: 'space-between' }}>
+        <Stack
+          direction={matches ? 'row' : 'column'}
+          sx={{ justifyContent: 'space-between' }}
+        >
           <Stack sx={{ flex: 2 }}>
             <Box>
               <Typography variant='h4' mb={3} mt={4} textAlign='center'>
@@ -119,14 +131,19 @@ const Cars = () => {
                 </Stack>
               </Stack>
             </Box>
-            <Box>
-              <Typography variant='h4' mb={3} mt={4} textAlign='center'>
-                Reservation Status
-              </Typography>
-            </Box>
-            <Box>
-              <ReservationTimeline />
-            </Box>
+            {matches ? (
+              <>
+                <Box>
+                  <Typography variant='h4' mb={3} mt={4} textAlign='center'>
+                    Reservation Status
+                  </Typography>
+                </Box>
+
+                <Box>
+                  <ReservationTimeline />
+                </Box>
+              </>
+            ) : null}
           </Stack>
           <Box sx={{ flex: 4 }}>
             <Stack gap={10} mt={5} mb={5}>
@@ -155,7 +172,12 @@ const Cars = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <Button variant='contained'>Book Now</Button>
+                    <Button
+                      variant='contained'
+                      onClick={() => handleCarSelect(vehicle.id)}
+                    >
+                      Book Now
+                    </Button>
                   </CardActions>
                 </Card>
               ))}

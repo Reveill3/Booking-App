@@ -45,6 +45,22 @@ const DesktopButtonGroup = styled(ButtonGroup)(({ theme }) => ({
   },
 }));
 
+const user = {
+  id: 1,
+  name: 'John Doe',
+  email: 'test@test.net',
+  reservations: [
+    {
+      id: 1,
+      car: {
+        id: 1,
+        make: 'Ford',
+        model: 'Mustang',
+      },
+    },
+  ],
+};
+
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
@@ -91,12 +107,28 @@ const NavBar = () => {
 
           {notAuth ? (
             <DesktopButtonGroup variant='contained'>
-              <Link style={{ textDecoration: 'none' }} to='/login'>
-                <SpacedButton>Login</SpacedButton>
-              </Link>
-              <Link style={{ textDecoration: 'none' }} to='/register'>
-                <SpacedButton>Register</SpacedButton>
-              </Link>
+              {user ? (
+                <>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to='/user/reservations'
+                  >
+                    <SpacedButton>Reservations</SpacedButton>
+                  </Link>
+                  <Link style={{ textDecoration: 'none' }} to='/user/profile'>
+                    <SpacedButton>Profile</SpacedButton>
+                  </Link>{' '}
+                </>
+              ) : (
+                <>
+                  <Link style={{ textDecoration: 'none' }} to='/login'>
+                    <SpacedButton>Login</SpacedButton>
+                  </Link>
+                  <Link style={{ textDecoration: 'none' }} to='/register'>
+                    <SpacedButton>Register</SpacedButton>
+                  </Link>{' '}
+                </>
+              )}
             </DesktopButtonGroup>
           ) : null}
         </StyledToolbar>
